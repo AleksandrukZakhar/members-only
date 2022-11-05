@@ -5,9 +5,22 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
 
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index.js");
+
+const mongoose = require("mongoose");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+
+require("dotenv").config();
+
+const mongoDb = process.env.DB_URL;
+mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
 
 const app = express();
+
+const User = require("./models/user.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -24,9 +37,21 @@ app.use(
         sourceMap: true,
     })
 );
+app.use(
+    require("express-session")({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use("/", indexRouter);
+
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     next(createError(404));
