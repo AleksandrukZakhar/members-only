@@ -6,8 +6,33 @@ block content
 
   if user 
     p= `Hello ${user.username}`
+
+    form(action="/new" method="POST")
+      p Write Message 
+
+      input(placeholder="Title" name="title")
+      input(placeholder="Text" name="text")
+      button(type="submit") Submit
+
+    for message in messages 
+      img(src=`${message.authorImage}` alt="avatar")
+      p= message.authorUserName
+      p= message.title 
+      p= message.text
+
+    else 
+      p No messages
+
   else 
-    p Log in
+    p Log in 
+
+    for message in messages 
+      img(src=`${message.authorImage}` alt="avatar")
+      p= message.title 
+      p= message.text
+
+    else 
+      p No messages
 
   div
     a(href="/sign-up") Sign up

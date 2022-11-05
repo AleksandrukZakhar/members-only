@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
+const Message = require("../models/message.js");
 const passport = require("passport");
 
-router.get("/", (req, res, next) => {
-    res.render("index", { title: "Members Only", user: req.user });
+router.get("/", async (req, res) => {
+    const messages = await Message.find();
+
+    res.render("index", { title: "Members Only", messages, user: req.user });
 });
 
 router.get("/sign-up", (req, res) => {
@@ -36,5 +39,19 @@ router
     .post(passport.authenticate("local"), (req, res) => {
         res.redirect("/");
     });
+
+router.post("/new", (req, res, next) => {
+    const { username } = req.user;
+    const { title, text } = req.body;
+
+    console.log(req.user);
+
+    const nMessage = new Message({
+        authorUserName: username,
+        title,
+        text,
+    });
+    nMessage.save((err) => (err ? next(err) : res.redirect("/")));
+});
 
 module.exports = router;
