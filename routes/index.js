@@ -16,9 +16,10 @@ router.get("/sign-up", (req, res) => {
 
 router.post("/sign-up", (req, res) => {
     const { username, password } = req.body;
+    const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${username}.svg`;
 
     User.register(
-        new User({ username }),
+        new User({ username, avatar }),
         password,
 
         (err) => {
@@ -41,17 +42,21 @@ router
     });
 
 router.post("/new", (req, res, next) => {
-    const { username } = req.user;
+    const { username, avatar } = req.user;
     const { title, text } = req.body;
-
-    console.log(req.user);
 
     const nMessage = new Message({
         authorUserName: username,
+        authorImage: avatar,
         title,
         text,
     });
     nMessage.save((err) => (err ? next(err) : res.redirect("/")));
+});
+
+router.get("/log-out", (req, res) => {
+    req.logout();
+    res.redirect("/");
 });
 
 module.exports = router;

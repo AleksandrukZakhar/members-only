@@ -2,6 +2,24 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
   body
+    img(class="background" src="https://wallpaperaccess.com/full/96462.jpg" alt="mountain")
+    header 
+      nav 
+        div(class="text-container")
+          h1= title 
+
+        if user
+          div(class="btn-container")
+            button Log out
+
+        else 
+          div(class="btn-container")
+            a(href="/log-in")
+              button  Log in 
+
+            a(href="/sign-up")
+              button Sign up
+
     block content

@@ -1,5 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+@mixin flex(
+    $direction: row,
+    $content: flex-start,
+    $items: stretch,
+    $wrap: nowrap
+) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $items;
+    flex-wrap: $wrap;
+}
+
+$white-primary: hsl(100, 100%, 100%);
+$black-primary: hsl(0, 0%, 0%);
+$link-color: hsl(197, 100%, 50%);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+nav {
+    @include flex(row, center, center);
+
+    padding: 0.5rem;
+    color: $white-primary;
+    background-color: $black-primary;
+}
+
+.text-container {
+    width: 80%;
+    height: 100%;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    margin: 0 0.5rem;
+    border: 1px solid $white-primary;
+    color: $white-primary;
+    background-color: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+        transition: 0.3s ease-in-out;
+        color: $black-primary;
+        background-color: $white-primary;
+    }
+}
+
+.btn-container {
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+form {
+    @include flex(row, center, center);
+
+    width: 100%;
+    padding: 2rem;
+}
+
+.center {
+    height: 100vh;
+}
+
+input {
+    width: 18rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 25px;
+    text-align: center;
+    color: $black-primary;
+}
+
+.input-container {
+    @include flex(column, center, center);
+
+    gap: 1rem;
+    padding: 2rem;
+    border: 0;
+    border-radius: 10px;
+    color: $white-primary;
+    background-color: $black-primary;
+}
+
+.message-container {
+    @include flex(column, flex-start, center);
+
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+}
+
+.message {
+    @include flex(column, center, center);
+
+    width: 25rem;
+    padding: 2rem;
+    gap: 1rem;
+    border: 0;
+    border-radius: 10px;
+    color: $white-primary;
+    background-color: $black-primary;
+
+    img {
+        width: 60px;
+        height: 60px;
+        border: 0;
+        border-radius: 50%;
+    }
+}
+
+.container {
+    @include flex(row, flex-start, center);
+
+    width: 100%;
+    gap: 1rem;
+}
+
+.content-container {
+    @include flex(column, center, center);
 }

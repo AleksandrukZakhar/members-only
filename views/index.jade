@@ -1,41 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
   if user 
-    p= `Hello ${user.username}`
 
     form(action="/new" method="POST")
-      p Write Message 
+      div(class="input-container")
+        h2 Write Message 
+        input(placeholder="Title" name="title")
+        input(placeholder="Text" name="text")
+        button(type="submit") Submit
 
-      input(placeholder="Title" name="title")
-      input(placeholder="Text" name="text")
-      button(type="submit") Submit
+    div(class="message-container")
+      div(class="message")
+        for message in messages 
+          div(class="container")
+            img(src=`${message.authorImage}` alt="avatar")
+            h2= message.authorUserName
 
-    for message in messages 
-      img(src=`${message.authorImage}` alt="avatar")
-      p= message.authorUserName
-      p= message.title 
-      p= message.text
+          div(class="content-container")
+            h2= message.title 
+            p= message.text
 
-    else 
-      p No messages
+        else 
+          p No messages
 
   else 
-    p Log in 
+    div(class="message-container")
+      div(class="message")
+        for message in messages
+          img(src=`${message.authorImage}` alt="avatar")
 
-    for message in messages 
-      img(src=`${message.authorImage}` alt="avatar")
-      p= message.title 
-      p= message.text
+          div(class="content-container")
+            h2= message.title 
+            p= message.text
 
-    else 
-      p No messages
-
-  div
-    a(href="/sign-up") Sign up
-
-  div
-    a(href="/log-in") Log in
+        else 
+          p No messages

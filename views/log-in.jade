@@ -1,9 +1,9 @@
 extends layout 
 
 block content 
-    h1= title 
-
-    form(action="/log-in" method="POST")
-        input(type="text" placeholder="username" name="username")
-        input(type="password" placeholder="password" name="password")
-        button(type="submit") Submit
+    form(class="center" action="/log-in" method="POST")
+        div(class="input-container")
+            h2 Log in
+            input(type="text" placeholder="username" name="username")
+            input(type="password" placeholder="password" name="password")
+            button(type="submit") Submit

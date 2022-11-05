@@ -1,6 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif; }
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1; }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0.5rem;
+  color: white;
+  background-color: black; }
+
+.text-container {
+  width: 80%;
+  height: 100%; }
+  .text-container h1 {
+    text-align: center; }
+
+button {
+  width: 150px;
+  height: 40px;
+  margin: 0 0.5rem;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  font-size: 1.2rem;
+  cursor: pointer; }
+  button:hover {
+    transition: 0.3s ease-in-out;
+    color: black;
+    background-color: white; }
+
+.btn-container {
+  margin-left: auto;
+  margin-right: 2rem; }
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 2rem; }
+
+.center {
+  height: 100vh; }
+
+input {
+  width: 18rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 25px;
+  text-align: center;
+  color: black; }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding: 2rem;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background-color: black; }
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem; }
+
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 25rem;
+  padding: 2rem;
+  gap: 1rem;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background-color: black; }
+  .message img {
+    width: 60px;
+    height: 60px;
+    border: 0;
+    border-radius: 50%; }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 1rem; }
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; }
 
 /*# sourceMappingURL=style.css.map */
