@@ -2,6 +2,7 @@
   "name": "members-only",
   "version": "0.0.0",
   "private": true,
+  "engines": { "node": "14.20.1"},
   "scripts": {
     "start": "yarn nodemon ./bin/www"
   },
