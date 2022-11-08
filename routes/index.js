@@ -54,8 +54,8 @@ router.post("/new", (req, res, next) => {
     nMessage.save((err) => (err ? next(err) : res.redirect("/")));
 });
 
-router.get("/log-out", (req, res) => {
-    req.logout();
+router.get("/log-out", (req, res, next) => {
+    req.logout((err) => (err ? next(err) : null));
     res.redirect("/");
 });
 
